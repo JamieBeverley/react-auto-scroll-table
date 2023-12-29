@@ -1,6 +1,7 @@
 {
   "name": "react-auto-scroll-table",
-  "version": "1.0.0",
+  "version": "1.0.1",
+  "private": false,
   "description": "",
   "main": "dist/index.js",
   "types": "dist/src/index.d.ts",
