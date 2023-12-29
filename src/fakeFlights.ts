@@ -18,7 +18,7 @@ const airports: string[] = [
 // Generate fake flight data with real airports
 export const fakeFlights: Flight[] = [];
 
-for (let i = 1; i <= 30; i++) {
+for (let i = 1; i <= 15; i++) {
   const departureIndex = Math.floor(Math.random() * airports.length);
   let destinationIndex = Math.floor(Math.random() * airports.length);
   

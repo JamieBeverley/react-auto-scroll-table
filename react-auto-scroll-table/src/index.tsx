@@ -2,17 +2,16 @@ import React, {ReactNode} from 'react';
 import {DefaultSpacer, getshouldScroll, useRefDimensions, animateStyle} from './utils';
 import styles from './index.module.css';
 
-type Props = {
+export type ScrollTableProps = {
+  tbodyRows: ReactNode[];
   speed?: number;
   thead?: ReactNode;
   spacer?: ReactNode;
-  tbodyRows: ReactNode[];
   tableClassName?: string;
-  containerClassName?: React.CSSProperties;
-  height: number;
+  containerClassName?: string;
 };
 
-function ScrollTable(props: Props) {
+function ScrollTable(props: ScrollTableProps) {
   const tbodyRows = props.tbodyRows;
   const speed = props.speed ?? 1;
   const SpacerComponent = props.spacer ?? <DefaultSpacer />;
@@ -49,11 +48,15 @@ function ScrollTable(props: Props) {
         style={topAnimateStyle}
       >
         {tbodyRows}
-        {SpacerComponent}
+        {
+          shouldScroll ? SpacerComponent : null
+        }
       </tbody>
       {
         !shouldScroll ? null :
-          <tbody style={bottomAnimateStyle}
+          <tbody
+            aria-hidden="true"
+            style={bottomAnimateStyle}
           >
             {tbodyRows}
             {SpacerComponent}
