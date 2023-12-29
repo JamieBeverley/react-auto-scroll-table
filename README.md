@@ -1,8 +1,15 @@
 # react-auto-scroll-table
+React component for a `<table>` that will automatically scroll/loop
+indefinitely when the table's contents exceed it's containing size (e.g. such as scrolling airport flight status displays).
+
+See demo [here](https://jamiebeverley.github.io/react-auto-scroll-table/)
+
+
 ## Installation
 ```
 npm install react-auto-scroll-table
 ```
+
 ## Usage/Props
 
 - `tbodyRows: ReactNode[]:` rows of the table. These should probably be `<tr>` elements.
