@@ -1,7 +1,5 @@
 import './App.css';
 import Example from './Example';
-import {fakeFlights} from './fakeFlights';
-
 
 function App() {
   return (
