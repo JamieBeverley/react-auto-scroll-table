@@ -6,7 +6,7 @@ import { terser } from 'rollup-plugin-terser';
 import typescript from '@rollup/plugin-typescript';
 import postcss from 'rollup-plugin-postcss';
 
-export default {
+const settings = {
   input: 'src/index.tsx',
   // output: [
   //   {
@@ -30,12 +30,17 @@ export default {
   plugins: [
     peerDepsExternal(),
     resolve(),
-    babel({ babelHelpers: 'bundled' }),
-    commonjs(),
-    terser(),
+    babel({
+      babelHelpers: 'bundled',
+      exclude: 'node_modules/**'
+    }),
+    // commonjs(),
+    // terser(),
     typescript({ tsconfig: './tsconfig.build.json', sourceMap: true }),
     postcss({
       modules: true,
     }),
   ]
 };
+
+export default settings;

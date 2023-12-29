@@ -1,63 +1,44 @@
-import {ReactNode, useRef} from 'react';
-import styles from './index.module.css'
+import React, {ReactNode} from 'react';
+import styles from './index.module.css';
 
-export function ScrollRow(props: {children: ReactNode}) {
-  return (
-    <tr className={styles.ScrollRow}>
-      {props.children}
-    </tr>
-  )
-}
-
-
-const isVerticalOverflown = (element: HTMLElement) => {
-  debugger;
-  return element.scrollHeight > element.clientHeight;
-} 
-
-
-export type ScrollTableProps = {
-  rows: ReactNode[];
-  thead?: ReactNode
-  separator?: ReactNode;
+type Props = {
+  speed?: number;
+  thead?: ReactNode;
+  spacer?: ReactNode;
+  tbodyRows: ReactNode[];
+  tableClassName?: string;
+  containerClassName?: React.CSSProperties;
 };
-export function ScrollTable(props:ScrollTableProps) {
-  const ref = useRef<HTMLTableElement>(null);
-  
-  const isOverflown = ref.current === null ? false : isVerticalOverflown(ref.current);
-  // const isOverflown = false;
-  console.log("asdf")
 
-  return (
-    <div
-      style={{border: '1px solid black'}}
-      className={styles.ScrollTable}
-    >
-      <table
-        // ref={ref}
-      >
-        {
-          props.thead ?? null
-        }
-        <tbody key={'top'}>
-          {
-            props.rows
-          }
-        </tbody>
-        {
-          !isOverflown ? null:
-          <>
-            {props.separator ?? null}
-            <tbody key={'bottom'}>
-            {
-              props.rows
-            }
-            </tbody> 
-          </>
-        }
+const DefaultSpacer = () => {
+  return <tr className={styles.spacer}></tr>;
+};
 
-      </table>
-    </div>
-  )
+function ScrollTable(props: Props) {
+  const tbodyRows = props.tbodyRows;
+  const speed = props.speed ?? 1;
+  const SpacerComponent = props.spacer ?? <DefaultSpacer/>;
+  const tableClassName = props.tableClassName ?? '';
+  const animateDuration = props.tbodyRows.length / speed;
+  return <div
+    className={styles.scrollTable}
+    style={props.containerClassName}
+  >
+    <table
+      className={tableClassName} >
+      {
+        props.thead ?? null
+      }
+      <tbody style={{animation: `${styles.top} ${animateDuration}s linear infinite`}}>
+        {tbodyRows}
+        {SpacerComponent}
+      </tbody>
+      <tbody style={{animation: `${styles.bottom} ${animateDuration}s linear infinite`}}>
+        {tbodyRows}
+        {SpacerComponent}
+      </tbody>
+    </table>
+  </div >;
 }
+
 export default ScrollTable;

@@ -1,5 +1,5 @@
 import './App.css';
-import {ScrollTable, ScrollRow} from 'react-auto-scroll-table'
+import ScrollTable from 'react-auto-scroll-table'
 import {Component, ReactNode, useEffect, useState} from 'react';
 import {fakeFlights} from './fakeFlights';
 
@@ -157,22 +157,25 @@ function App() {
   return (
     <div className="App">
       <ScrollTable
+        speed={1}
         thead={
           <thead>
-            <th>Flight Number</th>
-            <th>Airline</th>
-            <th>Departure Airport</th>
-            <th>Destination Airport</th>
-          </thead>
+            <tr>
+              <th>Flight Number</th>
+              <th>Airline</th>
+              <th>Departure Airport</th>
+              <th>Destination Airport</th>
+            </tr>
+        </thead>
         }
-        rows={
+        tbodyRows={
           fakeFlights.map((flight) =>
-            <ScrollRow key={flight.flightNumber}>
+            <tr key={flight.flightNumber}>
               <td>{flight.flightNumber}</td>
               <td>{flight.airline}</td>
               <td>{flight.departureAirport}</td>
               <td>{flight.destinationAirport}</td>
-            </ScrollRow>
+            </tr>
           )
         }
       />

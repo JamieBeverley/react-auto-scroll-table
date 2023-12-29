@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "types": "dist/src/index.d.ts",
   "scripts": {
-    "watch": "rm -r dist && rollup -c -w",
+    "watch": "rollup -c -w",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rm -r dist && rollup -c"
+    "build": "rollup -c"
   },
   "keywords": [],
   "author": "",
@@ -33,5 +33,8 @@
   "peerDependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
+  },
+  "dependencies": {
+    "@react-hook/resize-observer": "^1.2.6"
   }
 }

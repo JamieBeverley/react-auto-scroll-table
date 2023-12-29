@@ -1,0 +1,43 @@
+.scrollTable thead {
+  z-index: 1;
+  position: sticky
+}
+
+.spacer {
+  height:1rem;
+}
+
+.scrollTable {
+  overflow-y: hidden;
+}
+
+.scrollTable table {
+  border-collapse: collapse;
+}
+
+@keyframes top {
+  0% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+
+  99.9999% {
+    opacity: 1;
+    transform: translateY(-100%);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(0%);
+  }
+}
+
+@keyframes bottom {
+  0% {
+    transform: translateY(0%);
+  }
+
+  100% {
+    transform: translateY(-100%);
+  }
+}
