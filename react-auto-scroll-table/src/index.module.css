@@ -3,12 +3,14 @@
   position: sticky
 }
 
-.spacer {
+.scrollTableSpacer {
   height:1rem;
 }
 
 .scrollTable {
   overflow-y: hidden;
+  position: relative;
+  height: 100%;
 }
 
 .scrollTable table {

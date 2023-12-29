@@ -154,31 +154,51 @@ const ErrorComponent = () => {
 }
 
 function App() {
+  const [height, setHeight] = useState(700)
   return (
     <div className="App">
-      <ScrollTable
-        speed={1}
-        thead={
-          <thead>
-            <tr>
-              <th>Flight Number</th>
-              <th>Airline</th>
-              <th>Departure Airport</th>
-              <th>Destination Airport</th>
-            </tr>
-        </thead>
-        }
-        tbodyRows={
-          fakeFlights.map((flight) =>
-            <tr key={flight.flightNumber}>
-              <td>{flight.flightNumber}</td>
-              <td>{flight.airline}</td>
-              <td>{flight.departureAirport}</td>
-              <td>{flight.destinationAirport}</td>
-            </tr>
-          )
-        }
-      />
+      <div>
+        <label htmlFor="height">Height:</label>
+        <input
+          id="height"
+          type="number"
+          value={height}
+          onChange={e => setHeight(parseInt(e.target.value))}
+          step={10}
+        />
+      </div>
+      <div
+        style={{
+          height: `${height}px`,
+          width: '100%',
+          overflow: 'hidden',
+          border: '1px solid black'
+        }}
+      >
+        <ScrollTable
+          speed={1}
+          thead={
+            <thead>
+              <tr>
+                <th>Flight Number</th>
+                <th>Airline</th>
+                <th>Departure Airport</th>
+                <th>Destination Airport</th>
+              </tr>
+            </thead>
+          }
+          tbodyRows={
+            fakeFlights.map((flight) =>
+              <tr key={flight.flightNumber}>
+                <td>{flight.flightNumber}</td>
+                <td>{flight.airline}</td>
+                <td>{flight.departureAirport}</td>
+                <td>{flight.destinationAirport}</td>
+              </tr>
+            )
+          }
+        />
+      </div>
     </div>
   );
 }
