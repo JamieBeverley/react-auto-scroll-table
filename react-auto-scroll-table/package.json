@@ -9,7 +9,14 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rollup -c"
   },
-  "keywords": ["react", "table", "scroll", "auto", "resize", "observer"],
+  "keywords": [
+    "react",
+    "table",
+    "scroll",
+    "auto",
+    "resize",
+    "observer"
+  ],
   "author": "Jamie Beverley",
   "license": "MIT",
   "devDependencies": {
@@ -33,8 +40,5 @@
   "peerDependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
-  },
-  "dependencies": {
-    "@react-hook/resize-observer": "^1.2.6"
   }
 }
