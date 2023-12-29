@@ -16,16 +16,16 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '19'  # Set this to the Node.js version you use
+        node-version: '19'
 
     - name: build package
       run: cd react-auto-scroll-table && npm install && npm run build
 
     - name: Install Dependencies
-      run: npm install  # or use yarn
+      run: npm install && npm install ./react-auto-scroll-table
 
     - name: Build
-      run: npm run build  # or use yarn
+      run: npm run build
 
     - name: Deploy to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@4.1.4
